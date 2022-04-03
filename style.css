@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(78, 207, 46);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: first baseline;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.game-size{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select-size{
+    width: 160px;
+    height: 40px;
+    border: 2px solid rgb(224, 167, 9);
+    outline: none;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(76, 92, 143);
+    margin-top: 10px;
+    color: rgb(224, 167, 9);
+    cursor: pointer;
+    margin-right: 20px;
+    transition: .3s linear;
+    font-family: 'Sigmar One', cursive;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+}
+
+.select-size:hover{
+    background-color: rgb(5, 23, 92);
+}
+
+.start-btn{
+    width: 160px;
+    height: 40px;
+    background-color: #fff;
+    outline: none;
+    border: 2px solid rgb(224, 167, 9);
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 20px;
+    background-color: rgb(76, 92, 143);
+    cursor: pointer;
+    color: rgb(224, 167, 9);
+    transition: .3s linear;
+    font-family: 'Sigmar One', cursive;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.start-btn:hover{
+    background-color: rgb(5, 23, 92);
+}
+
+#playfield{
+    /* width: 366px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    background-color: rgb(172, 183, 204);
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.freeCell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    background-color: rgb(172, 183, 204);
+}
+
+.rabbitCell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    background: url(./img/bunny.png);
+    background-size: contain;
+}
+
+.wolfCell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    background: url(./img/wolf.png);
+    background-size: contain;
+}
+
+.fenceCell{
+    width: 60px;
+    height: 60px;    
+    border: 1px solid #fff;
+    background: url(./img/fence.png);
+    background-size: contain;
+}
+
+.houseCell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    background: url(./img/house.png);
+    background-size: contain;
+}
+
+.wolfsWonGameBoard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    background-color: rgb(198, 209, 172);
+    border-radius: 10px;
+    border: 10px solid rgb(138, 173, 142);
+    position: absolute;
+    margin: 180px auto;
+    font-size: 20px;
+    color: #333;
+    z-index: -1;
+}
+
+.rabbitWinGameBoard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 330px;
+    height: 300px;
+    background-color: rgb(177, 214, 91);
+    border-radius: 10px;
+    border: 10px solid rgb(62, 189, 79);
+    position: absolute;
+    margin: 180px auto;
+    font-size: 20px;
+    color: rgb(74, 163, 56);
+    z-index: -1;
+}

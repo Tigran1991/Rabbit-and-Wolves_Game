@@ -1,0 +1,13 @@
+function canHadNewPositionX(){
+  if(posX < 0 || posX > (playfieldSize - 1)){
+    return false;
+  }
+  return true;
+}
+
+function canHadNewPositionY(){
+  if(posY < 0 || posY > (playfieldSize - 1)){
+    return false;
+  }
+  return true;
+}
