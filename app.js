@@ -40,6 +40,7 @@ const characterItems = {
 };
 
 startBtn.addEventListener("click", function () {
+  document.addEventListener("keydown", moveOnBoard);
   startGame();
 });
 
@@ -151,8 +152,10 @@ function characterCurrentCoordinate(character) {
     }    
   }
 }
-  
-document.addEventListener("keydown", event => updateCharactersPositions(event));
+
+function moveOnBoard(event){
+  updateCharactersPositions(event);
+}
 
 function updateCharactersPositions(event) {
   characterCurrentCoordinate(characters.rabbitCell);
@@ -172,22 +175,30 @@ function updateCharactersPositions(event) {
 }
 
 function rabbitNewPosition(event){
-  if(event == "ArrowLeft" && posY === 0){
-    rabbitNewPositionX = posX, rabbitNewPositionY = (playfieldSize - 1);
-  }else if(event == "ArrowLeft"){
-    rabbitNewPositionX = posX, rabbitNewPositionY = (posY - 1);
-  }else if( event == "ArrowRight" && posY === (playfieldSize - 1)){
-    rabbitNewPositionX = posX, rabbitNewPositionY = 0;
-  }else if(event == "ArrowRight"){
-    rabbitNewPositionX = posX, rabbitNewPositionY = (posY + 1);
-  }else if(event == "ArrowDown" && posX === (playfieldSize - 1)){
-    rabbitNewPositionX = 0, rabbitNewPositionY = posY;
+  if(event == "ArrowLeft"){
+    if(posY === 0){
+      rabbitNewPositionX = posX, rabbitNewPositionY = (playfieldSize - 1);
+    }else{
+      rabbitNewPositionX = posX, rabbitNewPositionY = (posY - 1);
+    }
+  }else if( event == "ArrowRight"){
+    if(posY === (playfieldSize - 1)){
+      rabbitNewPositionX = posX, rabbitNewPositionY = 0;
+    }else{
+      rabbitNewPositionX = posX, rabbitNewPositionY = (posY + 1);
+    }
   }else if(event == "ArrowDown"){
-    rabbitNewPositionX = (posX + 1), rabbitNewPositionY = posY;
-  }else if(event == "ArrowUp" && posX === 0){
-    rabbitNewPositionX = (playfieldSize - 1), rabbitNewPositionY = posY;
+    if(posX === (playfieldSize - 1)){
+      rabbitNewPositionX = 0, rabbitNewPositionY = posY;
+    }else{
+      rabbitNewPositionX = (posX + 1), rabbitNewPositionY = posY;
+    }  
   }else if(event == "ArrowUp"){
-    rabbitNewPositionX = (posX - 1), rabbitNewPositionY = posY;
+    if(posX === 0){
+      rabbitNewPositionX = (playfieldSize - 1), rabbitNewPositionY = posY;
+    }else{
+      rabbitNewPositionX = (posX - 1), rabbitNewPositionY = posY;
+    }    
   }
 }
 
@@ -203,10 +214,13 @@ function rabbitCanMove(characterPositionX, characterPositionY){
   }
   if(rabbitNextPosition == characters.wolfCell){
     gameStatusBoard(characters.wolfCell, 'show');
+    document.removeEventListener("keydown", moveOnBoard);
+    
   }
   if(rabbitNextPosition == characters.houseCell){
     moveCharacter(characters.rabbitCell, rabbitNewPositionX, rabbitNewPositionY);
     gameStatusBoard(characters.rabbitCell, 'show');
+    document.removeEventListener("keydown", moveOnBoard);
   }
   return true;
 }
@@ -283,6 +297,7 @@ function wolfCanMove(characterPositionX, characterPositionY){
     return false;
   }
   if(wolfNextPosition == characters.rabbitCell){
+    document.removeEventListener("keydown", moveOnBoard);
     gameStatusBoard(characters.wolfCell, 'show');
   }
   return true;
